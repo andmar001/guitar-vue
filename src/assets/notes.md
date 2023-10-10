@@ -39,3 +39,27 @@ console.log(libro.autor) // J.R.R. Tolkien
 libro.disponible = false
 libro.titulo = 'El hobbit'
 console.log(libro.disponible) // false
+
+# State con ref 
+import { ref } from 'vue'
+const clientes = ref([])
+const libro = ref({})
+const auth = ref(false)
+const edad = ref(0)
+const mensaje = ref('hola')
+
+# acceder a las propiedades del ref
+const clientes = ref([])
+const libro = ref({})
+const auth = ref(false)
+const mensaje = ref('hola')
+
+console.log(clientes.value) // proxy
+console.log(libro.value) // {}
+console.log(auth.value) // false
+console.log(mensaje.value) // hola
+
+# reescribir un ref
+clientes.value.push(nuevoCliente)
+auth.value = true
+mensaje.value = 'hola mundo'
