@@ -128,3 +128,6 @@ ejemplo
     class="btn btn-dark w-100 "
     @click="$emit('incrementar')"
   >Agregar al Carrito</button>
+
+-- eventos definirlos con dos palabras cuando son descriptivos
+agregar-carrito - emit
