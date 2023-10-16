@@ -67,3 +67,64 @@ mensaje.value = 'hola mundo'
 # Props
 vue.js usa props para pasar informacion de un componente padre a un componente hijo.
 estos pueden ser datos estaticos o reactivos.
+
+# Eventos 
+v:on:click="nombreFuncion"
+- ejemplo
+-- inline handlers
+<button 
+  type="button" 
+  class="btn btn-dark w-100 "
+  v-on:click="numero++"
+>
+Agregar al Carrito
+</button>
+-- methods handlers
+son utiles cuando se hacen muchas cosas en el evento
+- ejemplo
+-- validaciones en formularios
+<script setup>
+  const numero = ref(0)
+  const incrementar = () => {
+    numero.value++
+  }
+</script>
+<button 
+  type="button" 
+  class="btn btn-dark w-100 "
+  v-on:click="incrementar"
+>Agregar al Carrito</button>
+</div>
+
+-- con otra sintaxis
+<button 
+  type="button" 
+  class="btn btn-dark w-100 "
+  @click="incrementar"
+>Agregar al Carrito</button>
+
+# componente event 
+- ejemplo
+@click="incrementar($event)"
+@submit.prevent="enviarFormulario($event)"
+-- para comunicar un componente hijo con un componente padre
+
+ejemplo
+# Componente padre
+  const incrementar = () => {
+    alert('click en el boton')  
+  }
+  <Guitarra 
+    v-for="guitarra in guitarras" 
+    :key="guitarra.id" :guitarra="guitarra" 
+    @incrementar="incrementar"    
+  />
+
+# Componente hijo
+  //declarar emit del componente padre
+  defineEmits(['incrementar'])
+  <button 
+    type="button" 
+    class="btn btn-dark w-100 "
+    @click="$emit('incrementar')"
+  >Agregar al Carrito</button>

@@ -9,6 +9,10 @@
     guitarras.value = db
   })
 
+  const incrementar = () => {
+    alert('click en el boton')  
+  }
+
 </script>
 
 <template>
@@ -92,8 +96,10 @@
 
       <Guitarra 
         v-for="guitarra in guitarras" 
-        :key="guitarra.id" :guitarra="guitarra" />
-      
+        :key="guitarra.id" :guitarra="guitarra" 
+        @incrementar="incrementar"    
+      />
+    
     </div>
 
   </main>
