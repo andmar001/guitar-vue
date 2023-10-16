@@ -63,3 +63,7 @@ console.log(mensaje.value) // hola
 clientes.value.push(nuevoCliente)
 auth.value = true
 mensaje.value = 'hola mundo'
+
+# Props
+vue.js usa props para pasar informacion de un componente padre a un componente hijo.
+estos pueden ser datos estaticos o reactivos.
