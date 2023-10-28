@@ -24,13 +24,22 @@
     }
   }
 
+  const decrementarCantidad = () =>{
+    console.log('decrementar')
+  }
+
+  const incrementarCantidad = () =>{
+    console.log('incrementar')
+  }
+
 </script>
 
 <template>
 
   <Header
     :carrito="carrito"
-  
+    @incrementar-cantidad = "incrementarCantidad"
+    @decrementar-cantidad = "decrementarCantidad"
   />
 
   <main class="container-xl mt-5">
