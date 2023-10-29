@@ -12,7 +12,7 @@
     }
   })
 
-  defineEmits(['incrementar-cantidad','decrementar-cantidad','agregar-carrito','eliminar-producto'])
+  defineEmits(['incrementar-cantidad','decrementar-cantidad','agregar-carrito','eliminar-producto','vaciar-carrito'])
 
   // uso del computed
   const totalPagar = computed(()=>{
@@ -96,7 +96,12 @@
                   </tbody>
                 </table>
                 <p class="text-end">Total pagar: <span class="fw-bold">${{ totalPagar }}</span></p>
-                <button class="btn btn-dark w-100 mt-3 p-2">Vaciar Carrito</button>
+                <button 
+                    class="btn btn-dark w-100 mt-3 p-2"
+                    @click="$emit('vaciar-carrito')"
+                    >
+                    Vaciar Carrito
+                </button>
               </div>
               
             </div>
