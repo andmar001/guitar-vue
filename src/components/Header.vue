@@ -54,7 +54,7 @@
                   <tbody>
                     <tr
                       v-for="producto in carrito"
-                      :key="producto"
+                      :key="producto.id"
                     >
                       <td>
                         <img 

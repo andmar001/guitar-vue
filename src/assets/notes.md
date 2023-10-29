@@ -134,3 +134,7 @@ agregar-carrito - emit
 
 # compute properties
 son funciones que se ejecutan cuando una propiedad cambia.
+
+# build
+npm run build
+- crea una carpeta dist con los archivos para produccion

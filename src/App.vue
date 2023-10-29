@@ -92,7 +92,8 @@
 
       <Guitarra 
         v-for="guitarra in guitarras" 
-        :key="guitarra.id" :guitarra="guitarra" 
+        :key="guitarra.id" 
+        :guitarra="guitarra" 
         @agregar-carrito="agregarCarrito"    
       />
     
