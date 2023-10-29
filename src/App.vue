@@ -12,8 +12,17 @@
 
   onMounted(()=>{
     guitarras.value = db
-    guitarra.value = guitarras.value[2]
+    guitarra.value = guitarras.value[3]
+
+    const carritoStorage = localStorage.getItem('carrito')
+    if(carritoStorage){
+      carrito.value = JSON.parse(carritoStorage)
+    }
   })
+
+  const guardarLocalStorage = () =>{
+    localStorage.setItem('carrito', JSON.stringify(carrito.value))
+  }
 
   const agregarCarrito = (guitarra) => {
     const existeCarrito = carrito.value.findIndex(producto => producto.id === guitarra.id)
@@ -24,26 +33,35 @@
       guitarra.cantidad = 1
       carrito.value.push(guitarra)
     }
+    guardarLocalStorage()
   }
 
   const decrementarCantidad = (id) =>{
     const index = carrito.value.findIndex(producto => producto.id === id)
     if (carrito.value[index].cantidad <= 1) return; //si la cantidad es 1 no se puede decrementar
     carrito.value[index].cantidad--
+
+    guardarLocalStorage()
   }
 
   const incrementarCantidad = (id) =>{
     const index = carrito.value.findIndex(producto => producto.id === id)
     if (carrito.value[index].cantidad >= 5) return; //si la cantidad es 5 no se puede incrementar
     carrito.value[index].cantidad++
+
+    guardarLocalStorage()
   }
 
   const eliminarProducto= (id) =>{
     carrito.value = carrito.value.filter(producto => producto.id !== id)
+
+    guardarLocalStorage()
   }
 
   const vaciarCarrito = () =>{
     carrito.value = []
+
+    guardarLocalStorage()
   }
 
 </script>
