@@ -1,5 +1,5 @@
 <script setup>
-  import { ref, reactive, onMounted } from 'vue'
+  import { ref, reactive, onMounted, watch } from 'vue'
   import { db } from './data/guitarras'
   import Guitarra from './components/Guitarra.vue'
   import Header from './components/Header.vue'
@@ -9,6 +9,13 @@
   const guitarras = ref([])
   const carrito = ref([])
   const guitarra = ref({})
+
+  // detectar cambios en el storage
+  watch(carrito, () =>{
+    guardarLocalStorage()
+  },{
+    deep: true  //para que se haga la comparacion de los objetos de forma profunda y estricta
+  })
 
   onMounted(()=>{
     guitarras.value = db
@@ -33,7 +40,7 @@
       guitarra.cantidad = 1
       carrito.value.push(guitarra)
     }
-    guardarLocalStorage()
+    // guardarLocalStorage()
   }
 
   const decrementarCantidad = (id) =>{
@@ -41,7 +48,7 @@
     if (carrito.value[index].cantidad <= 1) return; //si la cantidad es 1 no se puede decrementar
     carrito.value[index].cantidad--
 
-    guardarLocalStorage()
+    // guardarLocalStorage()
   }
 
   const incrementarCantidad = (id) =>{
@@ -49,19 +56,19 @@
     if (carrito.value[index].cantidad >= 5) return; //si la cantidad es 5 no se puede incrementar
     carrito.value[index].cantidad++
 
-    guardarLocalStorage()
+    // guardarLocalStorage()
   }
 
   const eliminarProducto= (id) =>{
     carrito.value = carrito.value.filter(producto => producto.id !== id)
 
-    guardarLocalStorage()
+    // guardarLocalStorage()
   }
 
   const vaciarCarrito = () =>{
     carrito.value = []
 
-    guardarLocalStorage()
+    // guardarLocalStorage()
   }
 
 </script>
