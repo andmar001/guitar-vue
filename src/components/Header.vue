@@ -1,16 +1,23 @@
 <script setup>
-const props = defineProps({
-  carrito:{
-    type: Array,
-    required: true
-  },
-  guitarra:{
-    type: Object,
-    required: true
-  }
-})
+  import { computed } from 'vue';
 
-defineEmits(['incrementar-cantidad','decrementar-cantidad','agregar-carrito'])
+  const props = defineProps({
+    carrito:{
+      type: Array,
+      required: true
+    },
+    guitarra:{
+      type: Object,
+      required: true
+    }
+  })
+
+  defineEmits(['incrementar-cantidad','decrementar-cantidad','agregar-carrito'])
+
+  // uso del computed
+  const totalPagar = computed(()=>{
+    return props.carrito.reduce((total, producto) => total + (producto.precio * producto.cantidad),0)
+  })
 
 </script>
 <template>
@@ -85,7 +92,7 @@ defineEmits(['incrementar-cantidad','decrementar-cantidad','agregar-carrito'])
                     </tr>
                   </tbody>
                 </table>
-                <p class="text-end">Total pagar: <span class="fw-bold">$899</span></p>
+                <p class="text-end">Total pagar: <span class="fw-bold">${{ totalPagar }}</span></p>
                 <button class="btn btn-dark w-100 mt-3 p-2">Vaciar Carrito</button>
               </div>
               

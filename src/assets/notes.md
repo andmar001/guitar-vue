@@ -131,3 +131,6 @@ ejemplo
 
 -- eventos definirlos con dos palabras cuando son descriptivos
 agregar-carrito - emit
+
+# compute properties
+son funciones que se ejecutan cuando una propiedad cambia.
